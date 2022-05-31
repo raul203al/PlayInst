@@ -1,6 +1,19 @@
 # Compiled class file
 *.class
+**/target/
+/target/
+*/target/*
+.classpath
+.project
+.settings
 
+# Package Files #
+*.jar
+*.war
+*.ear
+
+*.iml
+*.idea
 # Log file
 *.log
 
