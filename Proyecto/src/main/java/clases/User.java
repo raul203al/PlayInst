@@ -36,9 +36,7 @@ public class User extends ElementWName {
 			this.password = cursor.getString("password");
 			if (!this.password.equals(password) || this.password.equals(null)) {
 				DBConnection.disconnect();
-				System.out.println("test");
 			} else {
-				System.out.println("bien");
 				DBConnection.disconnect();
 			}
 		}else {
