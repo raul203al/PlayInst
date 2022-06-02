@@ -24,25 +24,28 @@ public class User extends ElementWName {
 			DBConnection.disconnect();
 			throw new SQLException("Insert erroeneo");
 		}
+		DBConnection.disconnect();
 	}
 
 	public User(String name, String password) throws SQLException {
 		super(name);
-
 		Statement smt = DBConnection.connect();
 		ResultSet cursor = smt.executeQuery("select * from user where username='" + name + "'");
 
 		if (cursor.next()) {
-			this.name = cursor.getString("username");
-			if (this.name.equals(name)) {
-				this.password = cursor.getString("password");
-				if (!this.password.equals(password)) {
-
-					DBConnection.disconnect();
-				}
+			this.password = cursor.getString("password");
+			if (!this.password.equals(password) || this.password.equals(null)) {
+				DBConnection.disconnect();
+				System.out.println("test");
 			} else {
+				System.out.println("bien");
 				DBConnection.disconnect();
 			}
+		}else {
+			DBConnection.disconnect();
+			throw new SQLException("Erro");
+
 		}
+		DBConnection.disconnect();
 	}
 }

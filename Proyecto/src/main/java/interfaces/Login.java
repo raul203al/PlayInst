@@ -12,6 +12,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -41,16 +42,19 @@ public class Login extends JPanel {
 		loginButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				String user = userField.getText();
+				String password = new String(passwordField.getPassword());
 
 					try {
-						User user = new User(userField.getText(), new String(passwordField.getPassword()));
-						System.out.println("Bien");
+						window.loggedUser = new User(user, password);
 
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					//w.goToScreen("menu");
+					JOptionPane.showMessageDialog(window, "Bienvenido " + window.loggedUser.getName());
+
+					w.goToScreen("menu");
 
 			}
 		});
@@ -73,7 +77,7 @@ public class Login extends JPanel {
 		userField.setHorizontalAlignment(SwingConstants.LEFT);
 		add(userField);
 		
-		JLabel passwordText = new JLabel("Contraseña:");
+		JLabel passwordText = new JLabel("ContraseÃ±a:");
 		passwordText.setBounds(770, 336, 85, 21);
 		passwordText.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		add(passwordText);
