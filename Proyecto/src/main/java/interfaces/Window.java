@@ -3,8 +3,6 @@ package interfaces;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.google.protobuf.Value.KindCase;
-
 import clases.User;
 
 public class Window extends JFrame {
@@ -17,7 +15,7 @@ public class Window extends JFrame {
 		this.setTitle("PlaYInst");
 		this.setResizable(true);
 		this.setUndecorated(true);
-		this.actualScreen = new Menu(this);
+		this.actualScreen = new Piano(this);
 		this.setContentPane(actualScreen);
 
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
