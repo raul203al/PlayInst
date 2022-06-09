@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import clases.Instrument;
 import clases.Key;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -26,6 +27,8 @@ import java.awt.event.MouseEvent;
 @SuppressWarnings("serial")
 public class Piano extends JPanel {
 	private ArrayList<Key> pianoKeys;
+
+
 
 	public Piano(Window w) {
 
@@ -254,164 +257,164 @@ public class Piano extends JPanel {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_Q) {
-					playSound(pianoKeys.get(0).getNote());
+					Instrument.playSound(pianoKeys.get(0).getNote());
 					a0.setIcon(new ImageIcon(grayTile));
 				}
 				if (e.getKeyCode() == KeyEvent.VK_W) {
-					playSound(pianoKeys.get(1).getNote());
+					Instrument.playSound(pianoKeys.get(1).getNote());
 					as0.setIcon(new ImageIcon(grayBlackTile));
 				}
 				if (e.getKeyCode() == KeyEvent.VK_E) {
-					playSound(pianoKeys.get(2).getNote());
+					Instrument.playSound(pianoKeys.get(2).getNote());
 					b0.setIcon(new ImageIcon(grayTile));
 				}
 
 				if (e.getKeyCode() == KeyEvent.VK_R) {
-					playSound(pianoKeys.get(3).getNote());
+					Instrument.playSound(pianoKeys.get(3).getNote());
 					c1.setIcon(new ImageIcon(grayTile));
 				}
 				if (e.getKeyCode() == KeyEvent.VK_T) {
-					playSound(pianoKeys.get(4).getNote());
+					Instrument.playSound(pianoKeys.get(4).getNote());
 					cs1.setIcon(new ImageIcon(grayBlackTile));
 				}
 				if (e.getKeyCode() == KeyEvent.VK_Y) {
-					playSound(pianoKeys.get(5).getNote());
+					Instrument.playSound(pianoKeys.get(5).getNote());
 					d1.setIcon(new ImageIcon(grayTile));
 				}
 
 				if (e.getKeyCode() == KeyEvent.VK_U) {
-					playSound(pianoKeys.get(6).getNote());
+					Instrument.playSound(pianoKeys.get(6).getNote());
 					ds1.setIcon(new ImageIcon(grayBlackTile));
 				}
 				if (e.getKeyCode() == KeyEvent.VK_I) {
-					playSound(pianoKeys.get(7).getNote());
+					Instrument.playSound(pianoKeys.get(7).getNote());
 					e1.setIcon(new ImageIcon(grayTile));
 				}
 				if (e.getKeyCode() == KeyEvent.VK_O) {
-					playSound(pianoKeys.get(8).getNote());
+					Instrument.playSound(pianoKeys.get(8).getNote());
 					f1.setIcon(new ImageIcon(grayTile));
 				}
 
 				if (e.getKeyCode() == KeyEvent.VK_P) {
-					playSound(pianoKeys.get(9).getNote());
+					Instrument.playSound(pianoKeys.get(9).getNote());
 					fs1.setIcon(new ImageIcon(grayBlackTile));
 				}
 				if (e.getKeyCode() == KeyEvent.VK_A) {
-					playSound(pianoKeys.get(10).getNote());
+					Instrument.playSound(pianoKeys.get(10).getNote());
 					g1.setIcon(new ImageIcon(grayTile));
 				}
 				if (e.getKeyCode() == KeyEvent.VK_S) {
-					playSound(pianoKeys.get(11).getNote());
+					Instrument.playSound(pianoKeys.get(11).getNote());
 					gs1.setIcon(new ImageIcon(grayBlackTile));
 				}
 
 				if (e.getKeyCode() == KeyEvent.VK_D) {
-					playSound(pianoKeys.get(12).getNote());
+					Instrument.playSound(pianoKeys.get(12).getNote());
 					a1.setIcon(new ImageIcon(grayTile));
 				}
 				if (e.getKeyCode() == KeyEvent.VK_F) {
-					playSound(pianoKeys.get(13).getNote());
+					Instrument.playSound(pianoKeys.get(13).getNote());
 					as1.setIcon(new ImageIcon(grayBlackTile));
 				}
 				if (e.getKeyCode() == KeyEvent.VK_G) {
-					playSound(pianoKeys.get(14).getNote());
+					Instrument.playSound(pianoKeys.get(14).getNote());
 					b1.setIcon(new ImageIcon(grayTile));
 				}
 
 				if (e.getKeyCode() == KeyEvent.VK_H) {
-					playSound(pianoKeys.get(15).getNote());
+					Instrument.playSound(pianoKeys.get(15).getNote());
 					c2.setIcon(new ImageIcon(grayTile));
 				}
 				if (e.getKeyCode() == KeyEvent.VK_J) {
-					playSound(pianoKeys.get(16).getNote());
+					Instrument.playSound(pianoKeys.get(16).getNote());
 					cs2.setIcon(new ImageIcon(grayBlackTile));
 				}
 				if (e.getKeyCode() == KeyEvent.VK_K) {
-					playSound(pianoKeys.get(17).getNote());
+					Instrument.playSound(pianoKeys.get(17).getNote());
 					d2.setIcon(new ImageIcon(grayTile));
 				}
 
 				if (e.getKeyCode() == KeyEvent.VK_L) {
-					playSound(pianoKeys.get(18).getNote());
+					Instrument.playSound(pianoKeys.get(18).getNote());
 					ds2.setIcon(new ImageIcon(grayBlackTile));
 				}
 				if (e.getKeyCode() == KeyEvent.VK_Z) {
-					playSound(pianoKeys.get(19).getNote());
+					Instrument.playSound(pianoKeys.get(19).getNote());
 					e2.setIcon(new ImageIcon(grayTile));
 				}
 				if (e.getKeyCode() == KeyEvent.VK_X) {
-					playSound(pianoKeys.get(20).getNote());
+					Instrument.playSound(pianoKeys.get(20).getNote());
 					f2.setIcon(new ImageIcon(grayTile));
 				}
 
 				if (e.getKeyCode() == KeyEvent.VK_C) {
-					playSound(pianoKeys.get(21).getNote());
+					Instrument.playSound(pianoKeys.get(21).getNote());
 					fs2.setIcon(new ImageIcon(grayBlackTile));
 				}
 				if (e.getKeyCode() == KeyEvent.VK_V) {
-					playSound(pianoKeys.get(22).getNote());
+					Instrument.playSound(pianoKeys.get(22).getNote());
 					g2.setIcon(new ImageIcon(grayTile));
 				}
 				if (e.getKeyCode() == KeyEvent.VK_B) {
-					playSound(pianoKeys.get(23).getNote());
+					Instrument.playSound(pianoKeys.get(23).getNote());
 					gs2.setIcon(new ImageIcon(grayBlackTile));
 				}
 
 				if (e.getKeyCode() == KeyEvent.VK_N) {
-					playSound(pianoKeys.get(24).getNote());
+					Instrument.playSound(pianoKeys.get(24).getNote());
 					a2.setIcon(new ImageIcon(grayTile));
 				}
 				if (e.getKeyCode() == KeyEvent.VK_M) {
-					playSound(pianoKeys.get(25).getNote());
+					Instrument.playSound(pianoKeys.get(25).getNote());
 					as2.setIcon(new ImageIcon(grayBlackTile));
 				}
 				if (e.getKeyCode() == KeyEvent.VK_1) {
-					playSound(pianoKeys.get(26).getNote());
+					Instrument.playSound(pianoKeys.get(26).getNote());
 					b2.setIcon(new ImageIcon(grayTile));
 				}
 
 				if (e.getKeyCode() == KeyEvent.VK_2) {
-					playSound(pianoKeys.get(27).getNote());
+					Instrument.playSound(pianoKeys.get(27).getNote());
 					c3.setIcon(new ImageIcon(grayTile));
 				}
 
 				if (e.getKeyCode() == KeyEvent.VK_3) {
-					playSound(pianoKeys.get(28).getNote());
+					Instrument.playSound(pianoKeys.get(28).getNote());
 					cs3.setIcon(new ImageIcon(grayBlackTile));
 				}
 
 				if (e.getKeyCode() == KeyEvent.VK_4) {
-					playSound(pianoKeys.get(29).getNote());
+					Instrument.playSound(pianoKeys.get(29).getNote());
 					d3.setIcon(new ImageIcon(grayTile));
 				}
 
 				if (e.getKeyCode() == KeyEvent.VK_5) {
-					playSound(pianoKeys.get(30).getNote());
+					Instrument.playSound(pianoKeys.get(30).getNote());
 					ds3.setIcon(new ImageIcon(grayBlackTile));
 				}
 
 				if (e.getKeyCode() == KeyEvent.VK_6) {
-					playSound(pianoKeys.get(31).getNote());
+					Instrument.playSound(pianoKeys.get(31).getNote());
 					e3.setIcon(new ImageIcon(grayTile));
 				}
 
 				if (e.getKeyCode() == KeyEvent.VK_7) {
-					playSound(pianoKeys.get(32).getNote());
+					Instrument.playSound(pianoKeys.get(32).getNote());
 					f3.setIcon(new ImageIcon(grayTile));
 				}
 
 				if (e.getKeyCode() == KeyEvent.VK_8) {
-					playSound(pianoKeys.get(33).getNote());
+					Instrument.playSound(pianoKeys.get(33).getNote());
 					fs3.setIcon(new ImageIcon(grayBlackTile));
 				}
 
 				if (e.getKeyCode() == KeyEvent.VK_9) {
-					playSound(pianoKeys.get(34).getNote());
+					Instrument.playSound(pianoKeys.get(34).getNote());
 					g3.setIcon(new ImageIcon(grayTile));
 				}
 
 				if (e.getKeyCode() == KeyEvent.VK_0) {
-					playSound(pianoKeys.get(35).getNote());
+					Instrument.playSound(pianoKeys.get(35).getNote());
 					gs3.setIcon(new ImageIcon(grayBlackTile));
 				}
 
@@ -544,7 +547,7 @@ public class Piano extends JPanel {
 				if (e.getKeyCode() == KeyEvent.VK_0) {
 					gs3.setIcon(new ImageIcon(blackTile));
 				}
-
+				Instrument.stopSound();
 			}
 		});
 
@@ -622,32 +625,4 @@ public class Piano extends JPanel {
 		 * panel.add(b7); panel.add(c8);
 		 */
 	}
-
-	public static synchronized void playSound(File Note) {
-		Clip clip;
-
-		try {
-			AudioInputStream inputStream = AudioSystem.getAudioInputStream(Note);
-			clip = AudioSystem.getClip();
-
-			clip.open(inputStream);
-
-			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-			gainControl.setValue(-10.0f);
-
-			clip.start();
-
-		} catch (LineUnavailableException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UnsupportedAudioFileException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
-	
 }

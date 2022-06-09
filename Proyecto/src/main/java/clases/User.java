@@ -5,6 +5,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.mysql.cj.protocol.a.TextRowFactory;
+
+import exceptions.EmailException;
+import exceptions.PasswordException;
+import exceptions.UsernameException;
 import utils.DBConnection;
 
 public class User {
@@ -14,13 +19,13 @@ public class User {
 	private String serial;
 	private String name;
 
-	public User(String name, String password, String email) throws SQLException {
+	public User(String name, String password, String email) throws SQLException, PasswordException, EmailException, UsernameException {
 
 		Statement smt = DBConnection.connect();
+		setEmail(email);
+		setName(name);
+		setPassword(password);
 		if (smt.executeUpdate("INSERT INTO user VALUES('" + name + "','" + email + "','" + password + "')") > 0) {
-
-			this.password = password;
-			this.email = email;
 		} else {
 			DBConnection.disconnect();
 			throw new SQLException("Insert erroeneo");
@@ -41,7 +46,7 @@ public class User {
 			}
 		}else {
 			DBConnection.disconnect();
-			throw new SQLException("Erro");
+			throw new SQLException("Error");
 
 		}
 		DBConnection.disconnect();
@@ -80,16 +85,28 @@ public class User {
 		return password;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPassword(String password) throws PasswordException {
+		if (password.length() > 6){
+			this.password = password;
+		}else {
+			throw new PasswordException("La contraseña es muy corta");
+		}
 	}
 
 	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEmail(String email) throws EmailException {
+		if (email.contains("@")) {
+			String[] parts = email.split("@");
+			if (parts[1].equals("gmail.com") || parts[1].equals("hotmail.com")) {
+				this.email = email;
+			}
+		}else {
+			throw new EmailException("Correo no válido");
+		}
+
 	}
 
 	public String getSerial() {
@@ -104,7 +121,12 @@ public class User {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String name) throws UsernameException {
+		if (name.isBlank()) {
+			throw new UsernameException(name);
+		}else {
+			this.name = name;
+
+		}
 	}
 }

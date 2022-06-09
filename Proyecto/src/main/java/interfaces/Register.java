@@ -14,6 +14,9 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
 import clases.User;
+import exceptions.EmailException;
+import exceptions.PasswordException;
+import exceptions.UsernameException;
 
 import javax.swing.DropMode;
 import java.awt.event.MouseAdapter;
@@ -101,6 +104,15 @@ public class Register extends JPanel {
 					JOptionPane.showMessageDialog(null, "Usuario creado correctamente");
 					w.goToScreen("login");
 				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (PasswordException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (EmailException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (UsernameException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
