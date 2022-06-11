@@ -103,19 +103,27 @@ public class Register extends JPanel {
 					User user = new User(userField.getText(), emailField.getText(), new String(passwordField.getPassword()));
 					JOptionPane.showMessageDialog(null, "Usuario creado correctamente");
 					w.goToScreen("login");
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
 				} catch (PasswordException e1) {
+					JOptionPane.showMessageDialog(null, "Contraseña inválida");
+
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (EmailException e1) {
+					JOptionPane.showMessageDialog(null, "Correo inválido");
+
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (UsernameException e1) {
+					JOptionPane.showMessageDialog(null, "Usuario inválido");
+
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
-				}
+				} catch (SQLException e1) {
+					JOptionPane.showMessageDialog(null, "Error en base de datos");
+
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} 
 			}
 		});
 		

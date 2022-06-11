@@ -15,7 +15,7 @@ public class Window extends JFrame {
 		this.setTitle("PlaYInst");
 		this.setResizable(true);
 		this.setUndecorated(true);
-		this.actualScreen = new Piano(this);
+		this.actualScreen = new Login(this);
 		this.setContentPane(actualScreen);
 
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -36,8 +36,11 @@ public class Window extends JFrame {
 		case "menu":
 			this.actualScreen = new Menu(this);
 			break;
-		case "piano":
-			this.actualScreen = new Piano(this);
+		case "pianoLow":
+			this.actualScreen = new PianoLow(this);
+			break;
+		case "pianoMedium":
+			this.actualScreen = new PianoMedium(this);
 			break;
 		}
 		this.actualScreen.setVisible(true);

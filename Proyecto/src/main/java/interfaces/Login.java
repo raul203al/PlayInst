@@ -50,6 +50,8 @@ public class Login extends JPanel {
 
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
+						JOptionPane.showMessageDialog(null, "Usuario Incorrecto");
+
 						e1.printStackTrace();
 					}
 					JOptionPane.showMessageDialog(window, "Bienvenido " + window.loggedUser.getName());

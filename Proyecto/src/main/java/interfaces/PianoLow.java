@@ -15,22 +15,25 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import clases.Instrument;
 import clases.Key;
+import clases.Recorder;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 @SuppressWarnings("serial")
-public class Piano extends JPanel {
+public class PianoLow extends JPanel {
 	private ArrayList<Key> pianoKeys;
 
 
 
-	public Piano(Window w) {
+	public PianoLow(Window w) {
 
 		BufferedImage pianoTop = null;
 		BufferedImage backButtonI = null;
@@ -252,6 +255,7 @@ public class Piano extends JPanel {
 		g2.setBounds(1089, 412, 50, 257);
 		JButton c3 = new JButton(new ImageIcon(pianoKeys.get(27).getKeyImage()));
 		c3.setBounds(1227, 412, 50, 257);
+		
 
 		a0.addKeyListener(new KeyAdapter() {
 			@Override
@@ -609,6 +613,33 @@ public class Piano extends JPanel {
 		});
 		backButtonJLabel.setBounds(42, 31, 127, 127);
 		panel.add(backButtonJLabel);
+		
+		JButton parar = new JButton("Parar");
+		JButton grabar = new JButton("Grabar");
+		grabar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				grabar.setVisible(false);
+				backButtonJLabel.setVisible(false);
+				parar.setVisible(true);
+				Recorder.record();
+			}
+		});
+		grabar.setBounds(510, 244, 89, 23);
+		panel.add(grabar);
+		
+		parar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Recorder.finish();
+				backButtonJLabel.setVisible(true);
+				parar.setVisible(false);
+				grabar.setVisible(true);
+			}
+		});
+		parar.setBounds(510, 244, 89, 23);
+		panel.add(parar);
+		parar.setVisible(false);
 
 		
 		/*

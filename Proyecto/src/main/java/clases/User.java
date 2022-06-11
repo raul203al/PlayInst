@@ -19,7 +19,8 @@ public class User {
 	private String serial;
 	private String name;
 
-	public User(String name, String password, String email) throws SQLException, PasswordException, EmailException, UsernameException {
+	public User(String name, String password, String email)
+			throws SQLException, PasswordException, EmailException, UsernameException {
 
 		Statement smt = DBConnection.connect();
 		setEmail(email);
@@ -44,7 +45,7 @@ public class User {
 			} else {
 				DBConnection.disconnect();
 			}
-		}else {
+		} else {
 			DBConnection.disconnect();
 			throw new SQLException("Error");
 
@@ -52,32 +53,31 @@ public class User {
 		DBConnection.disconnect();
 	}
 
-	
 	public User() {
 	}
 
 	public static ArrayList<User> getTodos() {
-		ArrayList<User> ret=new ArrayList<User>();
-		
-		Statement smt=DBConnection.connect();
-		
+		ArrayList<User> ret = new ArrayList<User>();
+
+		Statement smt = DBConnection.connect();
+
 		try {
-			ResultSet cursor=smt.executeQuery("select * from user");
-			while(cursor.next()) {
-				User u= new User();
-				u.email=cursor.getString("email");
-				u.password=cursor.getString("password");
-				u.name=cursor.getString("username");
+			ResultSet cursor = smt.executeQuery("select * from user");
+			while (cursor.next()) {
+				User u = new User();
+				u.email = cursor.getString("email");
+				u.password = cursor.getString("password");
+				u.name = cursor.getString("username");
 				ret.add(u);
 			}
-			
+
 		} catch (SQLException e) {
 			// AQUÍ NO DEBERÍA ENTRAR NUNCA PORQUE LA CONSULTA SIEMPRE VA A SER CORRECTA
 			e.printStackTrace();
 		}
-		
+
 		DBConnection.disconnect();
-		
+
 		return ret;
 	}
 
@@ -86,10 +86,11 @@ public class User {
 	}
 
 	public void setPassword(String password) throws PasswordException {
-		if (password.length() > 6){
-			this.password = password;
-		}else {
+		if (password.isBlank()) {
 			throw new PasswordException("La contraseña es muy corta");
+
+		} else {
+			this.password = password;
 		}
 	}
 
@@ -98,14 +99,8 @@ public class User {
 	}
 
 	public void setEmail(String email) throws EmailException {
-		if (email.contains("@")) {
-			String[] parts = email.split("@");
-			if (parts[1].equals("gmail.com") || parts[1].equals("hotmail.com")) {
-				this.email = email;
-			}
-		}else {
-			throw new EmailException("Correo no válido");
-		}
+
+		this.email = email;
 
 	}
 
@@ -124,7 +119,7 @@ public class User {
 	public void setName(String name) throws UsernameException {
 		if (name.isBlank()) {
 			throw new UsernameException(name);
-		}else {
+		} else {
 			this.name = name;
 
 		}

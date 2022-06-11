@@ -2,6 +2,8 @@ package clases;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.sound.sampled.AudioFileFormat;
 import javax.sound.sampled.AudioFormat;
@@ -12,72 +14,61 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.TargetDataLine;
 
 public class Recorder {
-	// record duration, in milliseconds
-    private static final long RECORD_TIME = 120000;  // 1 minute
- 
-    // path of the wav file
-    private File wavFile = new File("E:/Test/RecordAudio.wav");
- 
-    // format of audio file
-    private AudioFileFormat.Type fileType = AudioFileFormat.Type.WAVE;
- 
-    // the line from which audio data is captured
-    private TargetDataLine line;
- 
-    /**
-     * Defines an audio format
-     */
-    private AudioFormat getAudioFormat() {
-        float sampleRate = 16000;
-        int sampleSizeInBits = 8;
-        int channels = 2;
-        boolean signed = true;
-        boolean bigEndian = true;
-        AudioFormat format = new AudioFormat(sampleRate, sampleSizeInBits,
-                                             channels, signed, bigEndian);
-        return format;
-    }
- 
-    /**
-     * Captures the sound and record into a WAV file
-     */
-    public void record() {
-        try {
-            AudioFormat format = getAudioFormat();
-            DataLine.Info info = new DataLine.Info(TargetDataLine.class, format);
- 
-            // checks if system supports the data line
-            if (!AudioSystem.isLineSupported(info)) {
-                System.out.println("Line not supported");
-                System.exit(0);
-            }
-            line = (TargetDataLine) AudioSystem.getLine(info);
-            line.open(format);
-            line.start();   // start capturing
- 
-            System.out.println("Start capturing...");
- 
-            AudioInputStream ais = new AudioInputStream(line);
- 
-            System.out.println("Start recording...");
- 
-            // start recording
-            AudioSystem.write(ais, fileType, wavFile);
- 
-        } catch (LineUnavailableException ex) {
-            ex.printStackTrace();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-    }
- 
-    /**
-     * Closes the target data line to finish capturing and recording
-     */
-    public void finish() {
-        line.stop();
-        line.close();
-        System.out.println("Finished");
-    }
+
+	private static AudioFormat format = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED, 44100, 16, 2, 4, 44100, false);
+
+	private static DataLine.Info info = new DataLine.Info(TargetDataLine.class, format);
+
+	private static TargetDataLine targetLine;
+	
+	private static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
+	private static LocalDateTime time = LocalDateTime.now();
+	/**
+	 * Captures the sound and record into a WAV file
+	 */
+	public static void record() {
+		try {
+
+			// checks if system supports the data line
+			if (!AudioSystem.isLineSupported(info)) {
+				System.out.println("Line not supported");
+				System.exit(0);
+			}
+
+			targetLine = AudioSystem.getTargetDataLine(format);
+			targetLine.open();
+			targetLine.start(); // start capturing
+
+			Thread audioRecorderThread = new Thread() {
+				@Override
+				public void run() {
+					AudioInputStream recordingStream = new AudioInputStream(targetLine);
+					File outputFile = new File(dtf.format(time) + ".wav");
+					try {
+						AudioSystem.write(recordingStream, AudioFileFormat.Type.WAVE, outputFile);
+					} catch (IOException e) {
+						// TODO: handle exception
+						System.out.println(e);
+					}
+
+					System.out.println("Stopped");
+				}
+			};
+
+			audioRecorderThread.start();
+
+		} catch (LineUnavailableException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	/**
+	 * Closes the target data line to finish capturing and recording
+	 */
+	public static void finish() {
+		targetLine.stop();
+		targetLine.close();
+		System.out.println("Finished");
+	}
 
 }
