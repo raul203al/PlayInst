@@ -28,6 +28,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 @SuppressWarnings("serial")
+/**
+ * Clase que contien el instrumento piano con las notas bajas-medias
+ * @author raul203al
+ *
+ */
 public class PianoLow extends JPanel {
 	private ArrayList<Key> pianoKeys;
 

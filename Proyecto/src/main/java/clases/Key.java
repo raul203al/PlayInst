@@ -7,6 +7,11 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
+/**
+ * Clase que crea las notas de los instrumentos
+ * @author raul203al
+ *
+ */
 public class Key {
 
 	private File note;
@@ -38,6 +43,10 @@ public class Key {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Funcion que contiene todas las notas de un piano completo
+	 * @return ArrayLis Key
+	 */
 	public ArrayList<Key> getPianoKeys() throws IOException {
 		ArrayList<Key> pianoKeys = new ArrayList<>();
 		BufferedImage whiteKeyImage = ImageIO.read(new File("keys/images/white_tile.png"));

@@ -25,6 +25,14 @@ import java.sql.SQLException;
 
 import javax.swing.JPasswordField;
 
+/**
+ * Clase que contiene la interfaz de un formulario de registro el cual se conecta a la base de datos para crear un usuario con los siguientes parametros
+ * @author raul203al
+ * @param userField String del campo que contiene el nombre de usuario
+ * @param emailField String del campo que contiene el el correo del usuario
+ * @param passwordFiel String del campo que contiene la contraseña del usuario
+ *
+ */
 public class Register extends JPanel {
 	private Window window;
 	private JTextField userField;
@@ -98,6 +106,10 @@ public class Register extends JPanel {
 		registerButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		registerButton.addMouseListener(new MouseAdapter() {
 			@Override
+			/**
+			 * Funcion del boton que se encarga de crear el usuario. Si se crear correctamente muestra un JOptionPane indicandolo y te manda al login si no te muestra un JOptionPane indicando el error
+			 * @param e
+			 */
 			public void mouseClicked(MouseEvent e) {
 			try {
 					User user = new User(userField.getText(), emailField.getText(), new String(passwordField.getPassword()));
@@ -145,6 +157,9 @@ public class Register extends JPanel {
 		backButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		backButton.addMouseListener(new MouseAdapter() {
 			@Override
+			/**
+			 * Funcion del boton que te manda de vuelta al login
+			 */
 			public void mouseClicked(MouseEvent e) {
 				w.goToScreen("login");
 			}

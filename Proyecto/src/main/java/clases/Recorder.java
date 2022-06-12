@@ -13,6 +13,11 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.TargetDataLine;
 
+/**
+ * Clase que se encarga de grabar el sonido producido y guardarlo en un archivo WAVE
+ * @author raul203al
+ *
+ */
 public class Recorder {
 
 	private static AudioFormat format = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED, 44100, 16, 2, 4, 44100, false);
@@ -23,8 +28,9 @@ public class Recorder {
 	
 	private static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
 	private static LocalDateTime time = LocalDateTime.now();
+
 	/**
-	 * Captures the sound and record into a WAV file
+	 * Funcion que se encarga de grabar el sonido
 	 */
 	public static void record() {
 		try {
@@ -63,7 +69,7 @@ public class Recorder {
 	}
 
 	/**
-	 * Closes the target data line to finish capturing and recording
+	 * Funcion que cierra el DataLine parando la grabacion
 	 */
 	public static void finish() {
 		targetLine.stop();

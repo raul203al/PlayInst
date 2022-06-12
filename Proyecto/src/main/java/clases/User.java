@@ -11,7 +11,11 @@ import exceptions.EmailException;
 import exceptions.PasswordException;
 import exceptions.UsernameException;
 import utils.DBConnection;
-
+/**
+ * Clase que crea a los usuarios para la base de datos
+ * @author raul203al
+ *
+ */
 public class User {
 
 	private String password;
@@ -19,6 +23,12 @@ public class User {
 	private String serial;
 	private String name;
 
+	/**
+	 * Constructor que se usa para añadir a los usuario en la base de datos
+	 * @param name String del nombre
+	 * @param password String de la contraseña
+	 * @param email String del correo
+	 */
 	public User(String name, String password, String email)
 			throws SQLException, PasswordException, EmailException, UsernameException {
 
@@ -34,6 +44,11 @@ public class User {
 		DBConnection.disconnect();
 	}
 
+	/**
+	 * Constructor que se usa para leer si el usuario y contraseña coinciden en la base de datos
+	 * @param name String del nombre
+	 * @param password String de la contraseña
+	 */
 	public User(String name, String password) throws SQLException {
 		Statement smt = DBConnection.connect();
 		ResultSet cursor = smt.executeQuery("select * from user where username='" + name + "'");
@@ -56,6 +71,10 @@ public class User {
 	public User() {
 	}
 
+	/**
+	 * Funcion que obtiene un arraylist con todos los usuario
+	 * @return Arraylist de Users
+	 */
 	public static ArrayList<User> getTodos() {
 		ArrayList<User> ret = new ArrayList<User>();
 
@@ -72,7 +91,6 @@ public class User {
 			}
 
 		} catch (SQLException e) {
-			// AQUÍ NO DEBERÍA ENTRAR NUNCA PORQUE LA CONSULTA SIEMPRE VA A SER CORRECTA
 			e.printStackTrace();
 		}
 

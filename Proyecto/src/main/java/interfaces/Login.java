@@ -26,7 +26,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
-
+/**
+ * Interfaz del login para poder acceder al menu de los instrumentos
+ * @author raul203al
+ *
+ */
 public class Login extends JPanel {
 	private Window window;
 	private JTextField userField;

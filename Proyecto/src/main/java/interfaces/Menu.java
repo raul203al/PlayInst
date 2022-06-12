@@ -15,6 +15,11 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Menu donde se muestras todos los intrumentos disponibles y la opcion de juntar 2 audios
+ * @author raul203al
+ *
+ */
 public class Menu extends JPanel {
 	public Menu(Window w) {
 		setLayout(null);

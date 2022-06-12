@@ -1,5 +1,10 @@
 package clases;
 
+/**
+ * Superclase para los nombres
+ * @author raul203al
+ *
+ */
 public abstract class ElementWName {
 
 	String name;

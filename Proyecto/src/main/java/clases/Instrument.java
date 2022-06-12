@@ -10,12 +10,21 @@ import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+/**
+ * Clase instrumento que se encarga de reproducir el sonido de las notas
+ * @author raul203al
+ *
+ */
 public class Instrument {
 	
 	private static Clip clip;
 	private static AudioInputStream inputStream;
 	private static FloatControl gainControl;
 	
+	/**
+	 * Funcion que reproduce el sonido del archivo por parametros
+	 * @param Note archivo de sonido
+	 */
 	public static synchronized void playSound(File Note) {
 
 		try {
@@ -42,6 +51,9 @@ public class Instrument {
 
 	}
 	
+	/**
+	 * Funcion que para el sonido
+	 */
 	public static synchronized void stopSound() {
 
 		try {
